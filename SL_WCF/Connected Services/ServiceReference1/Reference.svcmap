@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="d84ad899-a7d3-454d-95f5-9e7c6cf3b3ed" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:7380/Operaciones.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Operaciones.disco" MetadataType="Disco" ID="b967cf95-d6b4-47f0-8f75-3d573998fbd6" SourceId="1" SourceUrl="http://localhost:7380/Operaciones.svc?disco" />
+    <MetadataFile FileName="Operaciones.xsd" MetadataType="Schema" ID="575cd6d2-1b0d-4a20-9f98-b42ee589cc16" SourceId="1" SourceUrl="http://localhost:7380/Operaciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Operaciones.wsdl" MetadataType="Wsdl" ID="dbba2f66-606c-4760-9620-27470921bf20" SourceId="1" SourceUrl="http://localhost:7380/Operaciones.svc?wsdl" />
+    <MetadataFile FileName="Operaciones1.xsd" MetadataType="Schema" ID="3c4317c4-00bc-43fd-a3d0-18a6e7f4a845" SourceId="1" SourceUrl="http://localhost:7380/Operaciones.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

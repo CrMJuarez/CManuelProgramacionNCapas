@@ -1,0 +1,1560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CManuelProgramacionNCapasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aseguradora">
+          <Key>
+            <PropertyRef Name="IdAseguradora" />
+          </Key>
+          <Property Name="IdAseguradora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="IdUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Colonia">
+          <Key>
+            <PropertyRef Name="IdColonia" />
+          </Key>
+          <Property Name="IdColonia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoPostal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMunicipio" Type="int" />
+        </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="IdDireccion" />
+          </Key>
+          <Property Name="IdDireccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumeroInterior" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NumeroExterior" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdColonia" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroEmpleado" Type="varchar" MaxLength="50" />
+          <Property Name="RFC" Type="varchar" MaxLength="20" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="NSS" Type="varchar" MaxLength="20" />
+          <Property Name="FechaIngreso" Type="date" />
+          <Property Name="Foto" Type="varchar(max)" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="IdPoliza" Type="int" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="254" />
+          <Property Name="DireccionWeb" Type="varchar" MaxLength="100" />
+          <Property Name="Logo" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdPais" Type="int" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="IdMunicipio" />
+          </Key>
+          <Property Name="IdMunicipio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poliza">
+          <Key>
+            <PropertyRef Name="IdPoliza" />
+          </Key>
+          <Property Name="IdPoliza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroPoliza" Type="varchar" MaxLength="20" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdSubPoliza" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubPoliza">
+          <Key>
+            <PropertyRef Name="IdSubPoliza" />
+          </Key>
+          <Property Name="IdSubPoliza" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="Sexo" Type="char" MaxLength="2" />
+          <Property Name="Curp" Type="varchar" MaxLength="20" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Imagen" Type="varchar(max)" />
+          <Property Name="IdRol" Type="int" />
+          <Property Name="Estatus" Type="bit" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FkIdColonia">
+          <End Role="Colonia" Type="Self.Colonia" Multiplicity="0..1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colonia">
+              <PropertyRef Name="IdColonia" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="IdColonia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdEmpresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdEstado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdMunicipio">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="0..1" />
+          <End Role="Colonia" Type="Self.Colonia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="IdMunicipio" />
+            </Principal>
+            <Dependent Role="Colonia">
+              <PropertyRef Name="IdMunicipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdPais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="IdPais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdPoliza">
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poliza">
+              <PropertyRef Name="IdPoliza" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="IdPoliza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdRol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdSubPoliza">
+          <End Role="SubPoliza" Type="Self.SubPoliza" Multiplicity="0..1" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubPoliza">
+              <PropertyRef Name="IdSubPoliza" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdSubPoliza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Aseguradora" Type="Self.Aseguradora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Aseguradora">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdUsuarioDireccion">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdUsuarioPoliza">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AseguradoraAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AseguradoraDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAseguradora" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AseguradoraGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AseguradoraGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAseguradora" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AseguradoraUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdAseguradora" Type="int" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ColoniaGetByIdMunicipio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdMunicipio" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmpleadoAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumeroEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="RFC" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="varchar" Mode="In" />
+          <Parameter Name="NSS" Type="varchar" Mode="In" />
+          <Parameter Name="FechaIngreso" Type="varchar" Mode="In" />
+          <Parameter Name="Foto" Type="varchar(max)" Mode="In" />
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+          <Parameter Name="IdPoliza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmpleadoGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EmpleadoGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmpleadoUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumeroEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="RFC" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="varchar" Mode="In" />
+          <Parameter Name="NSS" Type="varchar" Mode="In" />
+          <Parameter Name="FechaIngreso" Type="varchar" Mode="In" />
+          <Parameter Name="Foto" Type="varchar(max)" Mode="In" />
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+          <Parameter Name="IdPoliza" Type="int" Mode="In" />
+          <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmpresaAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="DireccionWeb" Type="varchar" Mode="In" />
+          <Parameter Name="Logo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="EmpresaDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmpresaGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EmpresaGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmpresaNombreGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EmpresaUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="DireccionWeb" Type="varchar" Mode="In" />
+          <Parameter Name="Logo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EstadoGetByIdPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPais" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MunicipioGetByIdEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEstado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PaisGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PolizaAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="NumeroPoliza" Type="varchar" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaModificacion" Type="varchar" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="IdSubPoliza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PolizaDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPoliza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PolizaGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PolizaGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPoliza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PolizaNombreGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PolizaUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="NumeroPoliza" Type="varchar" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaModificacion" Type="varchar" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="IdSubPoliza" Type="int" Mode="In" />
+          <Parameter Name="IdPoliza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RolGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UsuarioAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="char" Mode="In" />
+          <Parameter Name="Curp" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Celular" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="varchar" Mode="In" />
+          <Parameter Name="Imagen" Type="varchar(max)" Mode="In" />
+          <Parameter Name="IdRol" Type="int" Mode="In" />
+          <Parameter Name="Estatus" Type="bit" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Calle" Type="varchar" Mode="In" />
+          <Parameter Name="NumeroInterior" Type="varchar" Mode="In" />
+          <Parameter Name="NumeroExterior" Type="varchar" Mode="In" />
+          <Parameter Name="IdColonia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UsuarioDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UsuarioGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UsuarioGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UsuarioUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="char" Mode="In" />
+          <Parameter Name="Curp" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Celular" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="varchar" Mode="In" />
+          <Parameter Name="Imagen" Type="varchar(max)" Mode="In" />
+          <Parameter Name="IdRol" Type="int" Mode="In" />
+          <Parameter Name="Estatus" Type="bit" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Calle" Type="varchar" Mode="In" />
+          <Parameter Name="NumeroInterior" Type="varchar" Mode="In" />
+          <Parameter Name="NumeroExterior" Type="varchar" Mode="In" />
+          <Parameter Name="IdColonia" Type="int" Mode="In" />
+          <Parameter Name="IdDireccion" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CManuelProgramacionNCapasModelStoreContainer">
+          <EntitySet Name="Aseguradora" EntityType="Self.Aseguradora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colonia" EntityType="Self.Colonia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poliza" EntityType="Self.Poliza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubPoliza" EntityType="Self.SubPoliza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FkIdColonia" Association="Self.FkIdColonia">
+            <End Role="Colonia" EntitySet="Colonia" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdEmpresa" Association="Self.FkIdEmpresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdEstado" Association="Self.FkIdEstado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdMunicipio" Association="Self.FkIdMunicipio">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Colonia" EntitySet="Colonia" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdPais" Association="Self.FkIdPais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estado" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdPoliza" Association="Self.FkIdPoliza">
+            <End Role="Poliza" EntitySet="Poliza" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdRol" Association="Self.FkIdRol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdSubPoliza" Association="Self.FkIdSubPoliza">
+            <End Role="SubPoliza" EntitySet="SubPoliza" />
+            <End Role="Poliza" EntitySet="Poliza" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdUsuario" Association="Self.FkIdUsuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Aseguradora" EntitySet="Aseguradora" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdUsuarioDireccion" Association="Self.FkIdUsuarioDireccion">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdUsuarioPoliza" Association="Self.FkIdUsuarioPoliza">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Poliza" EntitySet="Poliza" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CManuelProgramacionNCapasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aseguradora">
+          <Key>
+            <PropertyRef Name="IdAseguradora" />
+          </Key>
+          <Property Name="IdAseguradora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="CManuelProgramacionNCapasModel.FkIdUsuario" FromRole="Aseguradora" ToRole="Usuario" />
+        </EntityType>
+        <EntityContainer Name="CManuelProgramacionNCapasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aseguradoras" EntityType="Self.Aseguradora" />
+          <FunctionImport Name="AseguradoraGetById" ReturnType="Collection(CManuelProgramacionNCapasModel.AseguradoraGetById_Result)">
+          <Parameter Name="IdAseguradora" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AseguradoraUpdate">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdAseguradora" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AseguradoraAdd">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AseguradoraDelete">
+          <Parameter Name="IdAseguradora" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Rols" EntityType="CManuelProgramacionNCapasModel.Rol" />
+          <FunctionImport Name="UsuarioAdd">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Curp" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="String" />
+            <Parameter Name="Imagen" Mode="In" Type="String" />
+            <Parameter Name="IdRol" Mode="In" Type="Int32" />
+            <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="NumeroInterior" Mode="In" Type="String" />
+            <Parameter Name="NumeroExterior" Mode="In" Type="String" />
+            <Parameter Name="IdColonia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UsuarioDelete">
+          <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UsuarioGetById" ReturnType="Collection(CManuelProgramacionNCapasModel.UsuarioGetById_Result)">
+          <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UsuarioUpdate">
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Curp" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="String" />
+            <Parameter Name="Imagen" Mode="In" Type="String" />
+            <Parameter Name="IdRol" Mode="In" Type="Int32" />
+            <Parameter Name="Estatus" Mode="In" Type="Boolean" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="NumeroInterior" Mode="In" Type="String" />
+            <Parameter Name="NumeroExterior" Mode="In" Type="String" />
+            <Parameter Name="IdColonia" Mode="In" Type="Int32" />
+            <Parameter Name="IdDireccion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RolGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.RolGetAll_Result)" />
+          <FunctionImport Name="UsuarioGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.UsuarioGetAll_Result)" >
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AseguradoraGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.AseguradoraGetAll_Result)" />
+          <EntitySet Name="Colonias" EntityType="CManuelProgramacionNCapasModel.Colonia" />
+          <EntitySet Name="Direccions" EntityType="CManuelProgramacionNCapasModel.Direccion" />
+          <EntitySet Name="Empleadoes" EntityType="CManuelProgramacionNCapasModel.Empleado" />
+          <EntitySet Name="Empresas" EntityType="CManuelProgramacionNCapasModel.Empresa" />
+          <EntitySet Name="Estadoes" EntityType="CManuelProgramacionNCapasModel.Estado" />
+          <EntitySet Name="Municipios" EntityType="CManuelProgramacionNCapasModel.Municipio" />
+          <EntitySet Name="Pais" EntityType="CManuelProgramacionNCapasModel.Pai" />
+          <EntitySet Name="Polizas" EntityType="CManuelProgramacionNCapasModel.Poliza" />
+          <EntitySet Name="SubPolizas" EntityType="CManuelProgramacionNCapasModel.SubPoliza" />
+          <AssociationSet Name="FkIdColonia" Association="CManuelProgramacionNCapasModel.FkIdColonia">
+            <End Role="Colonia" EntitySet="Colonias" />
+            <End Role="Direccion" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdMunicipio" Association="CManuelProgramacionNCapasModel.FkIdMunicipio">
+            <End Role="Municipio" EntitySet="Municipios" />
+            <End Role="Colonia" EntitySet="Colonias" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdEmpresa" Association="CManuelProgramacionNCapasModel.FkIdEmpresa">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdPoliza" Association="CManuelProgramacionNCapasModel.FkIdPoliza">
+            <End Role="Poliza" EntitySet="Polizas" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdEstado" Association="CManuelProgramacionNCapasModel.FkIdEstado">
+            <End Role="Estado" EntitySet="Estadoes" />
+            <End Role="Municipio" EntitySet="Municipios" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdPais" Association="CManuelProgramacionNCapasModel.FkIdPais">
+            <End Role="Pai" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdSubPoliza" Association="CManuelProgramacionNCapasModel.FkIdSubPoliza">
+            <End Role="SubPoliza" EntitySet="SubPolizas" />
+            <End Role="Poliza" EntitySet="Polizas" />
+          </AssociationSet>
+          <FunctionImport Name="ColoniaGetByIdMunicipio" ReturnType="Collection(CManuelProgramacionNCapasModel.ColoniaGetByIdMunicipio_Result)">
+          <Parameter Name="IdMunicipio" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmpleadoAdd">
+            <Parameter Name="NumeroEmpleado" Mode="In" Type="String" />
+            <Parameter Name="RFC" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="String" />
+            <Parameter Name="NSS" Mode="In" Type="String" />
+            <Parameter Name="FechaIngreso" Mode="In" Type="String" />
+            <Parameter Name="Foto" Mode="In" Type="String" />
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+            <Parameter Name="IdPoliza" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmpleadoGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.EmpleadoGetAll_Result)" />
+          <FunctionImport Name="EmpleadoGetById" ReturnType="Collection(CManuelProgramacionNCapasModel.EmpleadoGetById_Result)">
+          <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmpleadoUpdate">
+            <Parameter Name="NumeroEmpleado" Mode="In" Type="String" />
+            <Parameter Name="RFC" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="String" />
+            <Parameter Name="NSS" Mode="In" Type="String" />
+            <Parameter Name="FechaIngreso" Mode="In" Type="String" />
+            <Parameter Name="Foto" Mode="In" Type="String" />
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+            <Parameter Name="IdPoliza" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmpresaAdd">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="DireccionWeb" Mode="In" Type="String" />
+            <Parameter Name="Logo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EmpresaDelete">
+          <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmpresaGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.EmpresaGetAll_Result)" />
+          <FunctionImport Name="EmpresaGetById" ReturnType="Collection(CManuelProgramacionNCapasModel.EmpresaGetById_Result)">
+          <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmpresaNombreGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.EmpresaNombreGetAll_Result)" />
+          <FunctionImport Name="EmpresaUpdate">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="DireccionWeb" Mode="In" Type="String" />
+            <Parameter Name="Logo" Mode="In" Type="String" />
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EstadoGetByIdPais" ReturnType="Collection(CManuelProgramacionNCapasModel.EstadoGetByIdPais_Result)">
+          <Parameter Name="IdPais" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MunicipioGetByIdEstado" ReturnType="Collection(CManuelProgramacionNCapasModel.MunicipioGetByIdEstado_Result)">
+          <Parameter Name="IdEstado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PaisGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.PaisGetAll_Result)" />
+          <FunctionImport Name="PolizaNombreGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.PolizaNombreGetAll_Result)" />
+          <EntitySet Name="Usuarios" EntityType="CManuelProgramacionNCapasModel.Usuario" />
+          <AssociationSet Name="FkIdUsuario" Association="CManuelProgramacionNCapasModel.FkIdUsuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Aseguradora" EntitySet="Aseguradoras" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdUsuarioDireccion" Association="CManuelProgramacionNCapasModel.FkIdUsuarioDireccion">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Direccion" EntitySet="Direccions" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdUsuarioPoliza" Association="CManuelProgramacionNCapasModel.FkIdUsuarioPoliza">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Poliza" EntitySet="Polizas" />
+          </AssociationSet>
+          <AssociationSet Name="FkIdRol" Association="CManuelProgramacionNCapasModel.FkIdRol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <FunctionImport Name="PolizaAdd">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="NumeroPoliza" Mode="In" Type="String" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="String" />
+            <Parameter Name="FechaModificacion" Mode="In" Type="String" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IdSubPoliza" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PolizaUpdate">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="NumeroPoliza" Mode="In" Type="String" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="String" />
+            <Parameter Name="FechaModificacion" Mode="In" Type="String" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IdSubPoliza" Mode="In" Type="Int32" />
+            <Parameter Name="IdPoliza" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PolizaDelete">
+          <Parameter Name="IdPoliza" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PolizaGetAll" ReturnType="Collection(CManuelProgramacionNCapasModel.PolizaGetAll_Result)" />
+          <FunctionImport Name="PolizaGetById" ReturnType="Collection(CManuelProgramacionNCapasModel.PolizaGetById_Result)">
+            <Parameter Name="IdPoliza" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AseguradoraGetById_Result">
+          <Property Type="Int32" Name="IdAseguradora" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fechacreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="CManuelProgramacionNCapasModel.FkIdRol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <ComplexType Name="UsuarioGetById_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Curp" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Celular" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+          <Property Type="Int32" Name="IdRol" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RolGetAll_Result">
+          <Property Type="Int32" Name="IdRol" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="UsuarioGetAll_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="UsuarioNombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Curp" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Celular" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+          <Property Type="Int32" Name="IdRol" Nullable="false" />
+          <Property Type="String" Name="RolNombre" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="AseguradoraGetAll_Result">
+          <Property Type="Int32" Name="IdAseguradora" Nullable="false" />
+          <Property Type="String" Name="AseguradoraNombre" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fechacreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="UsuarioNombre" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Colonia">
+          <Key>
+            <PropertyRef Name="IdColonia" />
+          </Key>
+          <Property Name="IdColonia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoPostal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdMunicipio" Type="Int32" />
+          <NavigationProperty Name="Direccions" Relationship="CManuelProgramacionNCapasModel.FkIdColonia" FromRole="Colonia" ToRole="Direccion" />
+          <NavigationProperty Name="Municipio" Relationship="CManuelProgramacionNCapasModel.FkIdMunicipio" FromRole="Colonia" ToRole="Municipio" />
+        </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="IdDireccion" />
+          </Key>
+          <Property Name="IdDireccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Calle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroInterior" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroExterior" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdColonia" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="Colonia" Relationship="CManuelProgramacionNCapasModel.FkIdColonia" FromRole="Direccion" ToRole="Colonia" />
+          <NavigationProperty Name="Usuario" Relationship="CManuelProgramacionNCapasModel.FkIdUsuarioDireccion" FromRole="Direccion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="NSS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="IdPoliza" Type="Int32" />
+          <NavigationProperty Name="Empresa" Relationship="CManuelProgramacionNCapasModel.FkIdEmpresa" FromRole="Empleado" ToRole="Empresa" />
+          <NavigationProperty Name="Poliza" Relationship="CManuelProgramacionNCapasModel.FkIdPoliza" FromRole="Empleado" ToRole="Poliza" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionWeb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="CManuelProgramacionNCapasModel.FkIdEmpresa" FromRole="Empresa" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdPais" Type="Int32" />
+          <NavigationProperty Name="Municipios" Relationship="CManuelProgramacionNCapasModel.FkIdEstado" FromRole="Estado" ToRole="Municipio" />
+          <NavigationProperty Name="Pai" Relationship="CManuelProgramacionNCapasModel.FkIdPais" FromRole="Estado" ToRole="Pai" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="IdMunicipio" />
+          </Key>
+          <Property Name="IdMunicipio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstado" Type="Int32" />
+          <NavigationProperty Name="Colonias" Relationship="CManuelProgramacionNCapasModel.FkIdMunicipio" FromRole="Municipio" ToRole="Colonia" />
+          <NavigationProperty Name="Estado" Relationship="CManuelProgramacionNCapasModel.FkIdEstado" FromRole="Municipio" ToRole="Estado" />
+        </EntityType>
+        <EntityType Name="Pai">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estadoes" Relationship="CManuelProgramacionNCapasModel.FkIdPais" FromRole="Pai" ToRole="Estado" />
+        </EntityType>
+        <EntityType Name="Poliza">
+          <Key>
+            <PropertyRef Name="IdPoliza" />
+          </Key>
+          <Property Name="IdPoliza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroPoliza" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdSubPoliza" Type="Byte" />
+          <NavigationProperty Name="Empleadoes" Relationship="CManuelProgramacionNCapasModel.FkIdPoliza" FromRole="Poliza" ToRole="Empleado" />
+          <NavigationProperty Name="SubPoliza" Relationship="CManuelProgramacionNCapasModel.FkIdSubPoliza" FromRole="Poliza" ToRole="SubPoliza" />
+          <NavigationProperty Name="Usuario" Relationship="CManuelProgramacionNCapasModel.FkIdUsuarioPoliza" FromRole="Poliza" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="SubPoliza">
+          <Key>
+            <PropertyRef Name="IdSubPoliza" />
+          </Key>
+          <Property Name="IdSubPoliza" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Polizas" Relationship="CManuelProgramacionNCapasModel.FkIdSubPoliza" FromRole="SubPoliza" ToRole="Poliza" />
+        </EntityType>
+        <Association Name="FkIdColonia">
+          <End Type="CManuelProgramacionNCapasModel.Colonia" Role="Colonia" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Direccion" Role="Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colonia">
+              <PropertyRef Name="IdColonia" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="IdColonia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdMunicipio">
+          <End Type="CManuelProgramacionNCapasModel.Municipio" Role="Municipio" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Colonia" Role="Colonia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="IdMunicipio" />
+            </Principal>
+            <Dependent Role="Colonia">
+              <PropertyRef Name="IdMunicipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdEmpresa">
+          <End Type="CManuelProgramacionNCapasModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdPoliza">
+          <End Type="CManuelProgramacionNCapasModel.Poliza" Role="Poliza" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poliza">
+              <PropertyRef Name="IdPoliza" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="IdPoliza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdEstado">
+          <End Type="CManuelProgramacionNCapasModel.Estado" Role="Estado" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Municipio" Role="Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdPais">
+          <End Type="CManuelProgramacionNCapasModel.Pai" Role="Pai" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Estado" Role="Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pai">
+              <PropertyRef Name="IdPais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="IdPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdSubPoliza">
+          <End Type="CManuelProgramacionNCapasModel.SubPoliza" Role="SubPoliza" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Poliza" Role="Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubPoliza">
+              <PropertyRef Name="IdSubPoliza" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdSubPoliza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ColoniaGetByIdMunicipio_Result">
+          <Property Type="Int32" Name="IdColonia" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodigoPostal" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdMunicipio" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EmpleadoGetAll_Result">
+          <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+          <Property Type="String" Name="NumeroEmpleado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RFC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+          <Property Type="String" Name="NSS" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" />
+          <Property Type="String" Name="Foto" Nullable="true" />
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IdPoliza" Nullable="false" />
+          <Property Type="String" Name="PolizaNombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="EmpleadoGetById_Result">
+          <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+          <Property Type="String" Name="NumeroEmpleado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RFC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="254" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+          <Property Type="String" Name="NSS" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" />
+          <Property Type="String" Name="Foto" Nullable="true" />
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IdPoliza" Nullable="false" />
+          <Property Type="String" Name="PolizaNombre" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="EmpresaGetAll_Result">
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="254" />
+          <Property Type="String" Name="DireccionWeb" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Logo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EmpresaGetById_Result">
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="254" />
+          <Property Type="String" Name="DireccionWeb" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Logo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EmpresaNombreGetAll_Result">
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="254" />
+          <Property Type="String" Name="DireccionWeb" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Logo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EstadoGetByIdPais_Result">
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdPais" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MunicipioGetByIdEstado_Result">
+          <Property Type="Int32" Name="IdMunicipio" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdEstado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PaisGetAll_Result">
+          <Property Type="Int32" Name="IdPais" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PolizaNombreGetAll_Result">
+          <Property Type="Int32" Name="IdPoliza" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NumeroPoliza" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="true" />
+          <Property Type="Byte" Name="IdSubPoliza" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Curp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="Estatus" Type="Boolean" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Aseguradoras" Relationship="CManuelProgramacionNCapasModel.FkIdUsuario" FromRole="Usuario" ToRole="Aseguradora" />
+          <NavigationProperty Name="Direccions" Relationship="CManuelProgramacionNCapasModel.FkIdUsuarioDireccion" FromRole="Usuario" ToRole="Direccion" />
+          <NavigationProperty Name="Polizas" Relationship="CManuelProgramacionNCapasModel.FkIdUsuarioPoliza" FromRole="Usuario" ToRole="Poliza" />
+          <NavigationProperty Name="Rol" Relationship="CManuelProgramacionNCapasModel.FkIdRol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FkIdUsuario">
+          <End Type="CManuelProgramacionNCapasModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Aseguradora" Role="Aseguradora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Aseguradora">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdUsuarioDireccion">
+          <End Type="CManuelProgramacionNCapasModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Direccion" Role="Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdUsuarioPoliza">
+          <End Type="CManuelProgramacionNCapasModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Poliza" Role="Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkIdRol">
+          <End Type="CManuelProgramacionNCapasModel.Rol" Role="Rol" Multiplicity="0..1" />
+          <End Type="CManuelProgramacionNCapasModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PolizaGetAll_Result">
+          <Property Type="Int32" Name="IdPoliza" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NumeroPoliza" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="true" />
+          <Property Type="Byte" Name="IdSubPoliza" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PolizaGetById_Result">
+          <Property Type="Int32" Name="IdPoliza" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NumeroPoliza" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="true" />
+          <Property Type="Byte" Name="IdSubPoliza" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CManuelProgramacionNCapasModelStoreContainer" CdmEntityContainer="CManuelProgramacionNCapasEntities">
+          <EntitySetMapping Name="Aseguradoras">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Aseguradora">
+              <MappingFragment StoreEntitySet="Aseguradora">
+                <ScalarProperty Name="IdAseguradora" ColumnName="IdAseguradora" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AseguradoraGetById" FunctionName="CManuelProgramacionNCapasModel.Store.AseguradoraGetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.AseguradoraGetById_Result">
+                <ScalarProperty Name="IdAseguradora" ColumnName="IdAseguradora" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fechacreacion" ColumnName="Fechacreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AseguradoraUpdate" FunctionName="CManuelProgramacionNCapasModel.Store.AseguradoraUpdate" />
+          <FunctionImportMapping FunctionImportName="AseguradoraAdd" FunctionName="CManuelProgramacionNCapasModel.Store.AseguradoraAdd" />
+          <FunctionImportMapping FunctionImportName="AseguradoraDelete" FunctionName="CManuelProgramacionNCapasModel.Store.AseguradoraDelete" />
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UsuarioAdd" FunctionName="CManuelProgramacionNCapasModel.Store.UsuarioAdd" />
+          <FunctionImportMapping FunctionImportName="UsuarioDelete" FunctionName="CManuelProgramacionNCapasModel.Store.UsuarioDelete" />
+          <FunctionImportMapping FunctionImportName="UsuarioGetById" FunctionName="CManuelProgramacionNCapasModel.Store.UsuarioGetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.UsuarioGetById_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Curp" ColumnName="Curp" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UsuarioUpdate" FunctionName="CManuelProgramacionNCapasModel.Store.UsuarioUpdate" />
+          <FunctionImportMapping FunctionImportName="RolGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.RolGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.RolGetAll_Result">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UsuarioGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.UsuarioGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.UsuarioGetAll_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="UsuarioNombre" ColumnName="UsuarioNombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Curp" ColumnName="Curp" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AseguradoraGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.AseguradoraGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.AseguradoraGetAll_Result">
+                <ScalarProperty Name="IdAseguradora" ColumnName="IdAseguradora" />
+                <ScalarProperty Name="AseguradoraNombre" ColumnName="AseguradoraNombre" />
+                <ScalarProperty Name="Fechacreacion" ColumnName="Fechacreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="UsuarioNombre" ColumnName="UsuarioNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Colonias">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Colonia">
+              <MappingFragment StoreEntitySet="Colonia">
+                <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdColonia" ColumnName="IdColonia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Direccions">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Direccion">
+              <MappingFragment StoreEntitySet="Direccion">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdColonia" ColumnName="IdColonia" />
+                <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
+                <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="IdDireccion" ColumnName="IdDireccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadoes">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="NumeroEmpleado" ColumnName="NumeroEmpleado" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="DireccionWeb" ColumnName="DireccionWeb" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estadoes">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Pai">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polizas">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Poliza">
+              <MappingFragment StoreEntitySet="Poliza">
+                <ScalarProperty Name="IdSubPoliza" ColumnName="IdSubPoliza" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="NumeroPoliza" ColumnName="NumeroPoliza" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubPolizas">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.SubPoliza">
+              <MappingFragment StoreEntitySet="SubPoliza">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdSubPoliza" ColumnName="IdSubPoliza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ColoniaGetByIdMunicipio" FunctionName="CManuelProgramacionNCapasModel.Store.ColoniaGetByIdMunicipio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.ColoniaGetByIdMunicipio_Result">
+                <ScalarProperty Name="IdColonia" ColumnName="IdColonia" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmpleadoAdd" FunctionName="CManuelProgramacionNCapasModel.Store.EmpleadoAdd" />
+          <FunctionImportMapping FunctionImportName="EmpleadoGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.EmpleadoGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.EmpleadoGetAll_Result">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="NumeroEmpleado" ColumnName="NumeroEmpleado" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="EmpresaNombre" ColumnName="EmpresaNombre" />
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+                <ScalarProperty Name="PolizaNombre" ColumnName="PolizaNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmpleadoGetById" FunctionName="CManuelProgramacionNCapasModel.Store.EmpleadoGetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.EmpleadoGetById_Result">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="NumeroEmpleado" ColumnName="NumeroEmpleado" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="EmpresaNombre" ColumnName="EmpresaNombre" />
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+                <ScalarProperty Name="PolizaNombre" ColumnName="PolizaNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmpleadoUpdate" FunctionName="CManuelProgramacionNCapasModel.Store.EmpleadoUpdate" />
+          <FunctionImportMapping FunctionImportName="EmpresaAdd" FunctionName="CManuelProgramacionNCapasModel.Store.EmpresaAdd" />
+          <FunctionImportMapping FunctionImportName="EmpresaDelete" FunctionName="CManuelProgramacionNCapasModel.Store.EmpresaDelete" />
+          <FunctionImportMapping FunctionImportName="EmpresaGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.EmpresaGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.EmpresaGetAll_Result">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DireccionWeb" ColumnName="DireccionWeb" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmpresaGetById" FunctionName="CManuelProgramacionNCapasModel.Store.EmpresaGetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.EmpresaGetById_Result">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DireccionWeb" ColumnName="DireccionWeb" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmpresaNombreGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.EmpresaNombreGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.EmpresaNombreGetAll_Result">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DireccionWeb" ColumnName="DireccionWeb" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmpresaUpdate" FunctionName="CManuelProgramacionNCapasModel.Store.EmpresaUpdate" />
+          <FunctionImportMapping FunctionImportName="EstadoGetByIdPais" FunctionName="CManuelProgramacionNCapasModel.Store.EstadoGetByIdPais">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.EstadoGetByIdPais_Result">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MunicipioGetByIdEstado" FunctionName="CManuelProgramacionNCapasModel.Store.MunicipioGetByIdEstado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.MunicipioGetByIdEstado_Result">
+                <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaisGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.PaisGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.PaisGetAll_Result">
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PolizaNombreGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.PolizaNombreGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.PolizaNombreGetAll_Result">
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NumeroPoliza" ColumnName="NumeroPoliza" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdSubPoliza" ColumnName="IdSubPoliza" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="CManuelProgramacionNCapasModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Curp" ColumnName="Curp" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PolizaAdd" FunctionName="CManuelProgramacionNCapasModel.Store.PolizaAdd" />
+          <FunctionImportMapping FunctionImportName="PolizaUpdate" FunctionName="CManuelProgramacionNCapasModel.Store.PolizaUpdate" />
+          <FunctionImportMapping FunctionImportName="PolizaDelete" FunctionName="CManuelProgramacionNCapasModel.Store.PolizaDelete" />
+          <FunctionImportMapping FunctionImportName="PolizaGetAll" FunctionName="CManuelProgramacionNCapasModel.Store.PolizaGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.PolizaGetAll_Result">
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NumeroPoliza" ColumnName="NumeroPoliza" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdSubPoliza" ColumnName="IdSubPoliza" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PolizaGetById" FunctionName="CManuelProgramacionNCapasModel.Store.PolizaGetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CManuelProgramacionNCapasModel.PolizaGetById_Result">
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NumeroPoliza" ColumnName="NumeroPoliza" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdSubPoliza" ColumnName="IdSubPoliza" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

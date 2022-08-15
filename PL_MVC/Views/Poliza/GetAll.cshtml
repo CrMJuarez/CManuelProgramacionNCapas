@@ -1,0 +1,68 @@
+﻿@model ML.Poliza
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <h2>Usuario</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Seleccione un usuario para editarla o el boton + para agregar un usuario...</h5>
+            <hr />
+        </div>
+    </div>
+    <div style="float:right;">
+        @Html.ActionLink("+", "Form", "Poliza", htmlAttributes: new { @class = "btn btn-success" })
+    </div>
+
+    @if (Model.Polizas == null)
+    {
+        <div class="p-3 mb-2 bg-danger text-white">Aun no hay usuarios registrados</div>
+    }
+    else
+    {
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <td class="text-center">Editar</td>
+
+                    <td class="hidden">IdPoliza</td>
+                    <td class="text-center">Nombre</td>
+                    <td class="text-center">NumeroPoliza</td>
+                    <td class="text-center">FechaCreacion</td>
+                    <td class="text-center">FechaModificacion</td>
+                    <td class="hidden">IdUsuario</td>
+                    <td class="hidden">IdSubPoliza</td>
+                   
+
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ML.Poliza poliza in Model.Polizas)
+                {
+                    <tr>
+                        <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Poliza", new { IdPoliza = poliza.IdPoliza })"></a></td>
+
+                        <td class="hidden">@poliza.IdPoliza</td>
+                        <td class="text-center">@poliza.Nombre</td>
+                        <td class="text-center">@poliza.NumeroPoliza</td>
+                        <td class="text-center">@poliza.FechaCreacion</td>
+                        <td class="text-center">@poliza.FechaModificacion</td>
+                        <td class="hidden">@poliza.Usuario.IdUsuario</td>
+                        <td class="hidden">@poliza.SubPoliza.IdSubPoliza</td>
+                       
+
+                        <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Poliza", new { IdPoliza = poliza.IdPoliza})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+

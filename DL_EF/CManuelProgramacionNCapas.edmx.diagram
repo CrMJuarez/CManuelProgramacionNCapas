@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71f8536f6c394e7eb128a4c1ec093cb7" Name="Diagram1">
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Aseguradora" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Rol" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Colonia" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Direccion" Width="1.5" PointX="7.5" PointY="1.75" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Empleado" Width="1.5" PointX="6.75" PointY="6" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Empresa" Width="1.5" PointX="4.5" PointY="14.875" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Estado" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Municipio" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Pai" Width="1.5" PointX="1.5" PointY="8.25" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Poliza" Width="1.5" PointX="4.5" PointY="4.625" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.SubPoliza" Width="1.5" PointX="2.25" PointY="14.25" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdColonia" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdMunicipio" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdEmpresa" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdPoliza" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdEstado" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdPais" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdSubPoliza" />
+        <EntityTypeShape EntityType="CManuelProgramacionNCapasModel.Usuario" Width="1.5" PointX="3" PointY="18.375" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdUsuario" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdUsuarioDireccion" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdUsuarioPoliza" />
+        <AssociationConnector Association="CManuelProgramacionNCapasModel.FkIdRol" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
